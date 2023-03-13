@@ -13,15 +13,15 @@ import { setMode } from "state";
 import profileImage from "assets/profile.jpeg";
 import {
   AppBar,
+  Button,
+  Box,
+  Typography,
   IconButton,
   InputBase,
   Toolbar,
-  useTheme,
-  Box,
-  Typography,
   Menu,
   MenuItem,
-  Button,
+  useTheme,
 } from "@mui/material";
 
 const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
@@ -41,11 +41,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
         boxShadow: "none",
       }}
     >
-      <Toolbar
-        sx={{
-          justifyContent: "space-between",
-        }}
-      >
+      <Toolbar sx={{ justifyContent: "space-between" }}>
         {/* LEFT SIDE */}
         <FlexBetween>
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
@@ -57,7 +53,7 @@ const Navbar = ({ user, isSidebarOpen, setIsSidebarOpen }) => {
             gap="3rem"
             p="0.1rem 1.5rem"
           >
-            <InputBase placeholder="Search...." />
+            <InputBase placeholder="Search..." />
             <IconButton>
               <Search />
             </IconButton>

@@ -25,7 +25,7 @@ const Product = ({
   stat,
 }) => {
   const theme = useTheme();
-  const [isExpended, setIsExpended] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <Card
@@ -33,14 +33,11 @@ const Product = ({
         backgroundImage: "none",
         backgroundColor: theme.palette.background.alt,
         borderRadius: "0.55rem",
-        fontSize: "14px",
       }}
     >
       <CardContent>
         <Typography
-          sx={{
-            fontSize: "14px",
-          }}
+          sx={{ fontSize: 14 }}
           color={theme.palette.secondary[700]}
           gutterBottom
         >
@@ -56,19 +53,17 @@ const Product = ({
 
         <Typography variant="body2">{description}</Typography>
       </CardContent>
-
       <CardActions>
         <Button
           variant="primary"
           size="small"
-          onClick={() => setIsExpended(!isExpended)}
+          onClick={() => setIsExpanded(!isExpanded)}
         >
           See More
         </Button>
       </CardActions>
-
       <Collapse
-        in={isExpended}
+        in={isExpanded}
         timeout="auto"
         unmountOnExit
         sx={{
@@ -76,13 +71,13 @@ const Product = ({
         }}
       >
         <CardContent>
-          <Typography>id: {_id} </Typography>
-          <Typography>Supply Left: {supply} </Typography>
+          <Typography>id: {_id}</Typography>
+          <Typography>Supply Left: {supply}</Typography>
           <Typography>
-            Yearly Sales This Year: {stat.yearlySalesTotal}{" "}
+            Yearly Sales This Year: {stat.yearlySalesTotal}
           </Typography>
           <Typography>
-            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}{" "}
+            Yearly Units Sold This Year: {stat.yearlyTotalSoldUnits}
           </Typography>
         </CardContent>
       </Collapse>
@@ -92,12 +87,11 @@ const Product = ({
 
 const Products = () => {
   const { data, isLoading } = useGetProductsQuery();
-  const isNonMobile = useMediaQuery("(min-width:1000px)");
+  const isNonMobile = useMediaQuery("(min-width: 1000px)");
 
   return (
     <Box m="1.5rem 2.5rem">
-      <Header title="PRODUCT" subtitle="See yout list products." />
-
+      <Header title="PRODUCTS" subtitle="See your list of products." />
       {data || !isLoading ? (
         <Box
           mt="20px"
@@ -107,9 +101,7 @@ const Products = () => {
           rowGap="20px"
           columnGap="1.33%"
           sx={{
-            "& > div": {
-              gridColumn: isNonMobile ? undefined : "span 4",
-            },
+            "& > div": { gridColumn: isNonMobile ? undefined : "span 4" },
           }}
         >
           {data.map(
@@ -138,7 +130,7 @@ const Products = () => {
           )}
         </Box>
       ) : (
-        <>Loading....</>
+        <>Loading...</>
       )}
     </Box>
   );
